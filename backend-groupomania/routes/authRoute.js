@@ -5,4 +5,5 @@ const router = Router();
 router.post("/signup");
 // Route pour l'autentification d'un user
 router.post("/login");
+
 module.exports = router;
