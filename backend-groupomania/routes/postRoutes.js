@@ -1,10 +1,17 @@
 const { Router } = require("express");
+const {
+  getAllpost,
+  getOnepost,
+  createPost,
+  updatePost,
+  deletePost,
+} = require("../controllers/postControllers");
 const router = Router();
 
-router.get("/");
-router.get("/:id");
-router.post("/");
-router.put("/:id");
-router.delete("/:id");
+router.get("/", authParams, getAllpost);
+router.get("/:id", authParams, getOnepost);
+router.post("/", authParams, createPost);
+router.put("/:id", authParams, updatePost);
+router.delete("/:id", authParams, deletePost);
 
 module.exports = router;

@@ -1,9 +1,18 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-exports.signup = (req, res) => {
-  res.status(201).json({ message: "ok" });
+exports.getAllpost = (req, res) => {
+  res.status(200).json({ message: "getAllpost" });
 };
-exports.login = (req, res) => {
-  res.status(201).json({ message: "ok" });
+exports.getOnepost = (req, res) => {
+  res.status(200).json({ message: "getOnepost" });
+};
+exports.createPost = (req, res) => {
+  res.status(200).json({ message: "createPost" });
+};
+exports.updatePost = (req, res) => {
+  res.status(200).json({ message: "updatePost" });
+};
+exports.deletePost = (req, res) => {
+  res.status(200).json({ message: "deletePost" });
 };
