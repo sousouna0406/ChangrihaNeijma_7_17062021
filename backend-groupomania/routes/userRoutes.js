@@ -4,7 +4,7 @@ const {
   deleteUser,
   updateUser,
 } = require("../controllers/userControllers");
-
+const authParams = require("../middlewares/authParams");
 const router = Router();
 
 router.get("/:id", authParams, getOneUser);
