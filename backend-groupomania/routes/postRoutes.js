@@ -6,13 +6,13 @@ const {
   updatePost,
   deletePost,
 } = require("../controllers/postControllers");
-const authParams = require("../middlewares/authParams");
+
 const router = Router();
 
-router.get("/", authParams, getAllpost);
-router.get("/:id", authParams, getOnepost);
-router.post("/", authParams, createPost);
-router.put("/:id", authParams, updatePost);
-router.delete("/:id", authParams, deletePost);
+router.get("/", getAllpost);
+router.get("/:id", getOnepost);
+router.post("/", createPost);
+router.put("/:id", updatePost);
+router.delete("/:id", deletePost);
 
 module.exports = router;
