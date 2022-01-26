@@ -1,6 +1,3 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-
 exports.getOneUser = (req, res) => {
   res.status(200).json({ message: "getOneUser" });
 };
