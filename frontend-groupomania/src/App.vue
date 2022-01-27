@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">S'inscire</router-link> |
-      <router-link to="/about">Connection</router-link>
-    </div>
-    <router-view/>
+    <header>
+      <div id="nav">
+        <router-link to="/">S'inscire</router-link> |
+        <router-link to="/about">Connection</router-link>
+      </div>
+    </header>
+
+    <router-view />
   </div>
 </template>
 
@@ -20,18 +23,39 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-image: url("../src/assets/fond.jpeg");
+  background-size: cover;
 }
-.home img{
-      width: 60%;
-      height: 10%;
-      
-  }
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section {
+  width: 100%;
+  background-image: url("../src/assets/fond.jpeg");
+  background-size: cover;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.logo img {
+  width: 40%;
+}
 
 #nav {
-  padding: 30px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 #nav a {
+  margin: 10px;
+  font-size: 23px;
   font-weight: bold;
   color: #2c3e50;
 }
