@@ -1,7 +1,7 @@
 .DS_Store
 frontend-groupomania/node_modules
 backend-groupomania/node_modules
-backend-groupomania/config/.env
+backend-groupomania/env/.env
 frontend-groupomania/dist
 
 
