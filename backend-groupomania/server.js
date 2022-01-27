@@ -26,4 +26,4 @@ app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
 
-app.listen(3006);
+app.listen(3000);
