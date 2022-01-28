@@ -1,10 +1,16 @@
 <template>
   <div class="about">
+    <div class="logo">
+      <img alt="Vue logo" src="../assets/logo.png" />
+    </div>
     <section class="formulaire">
-      <h1>Un réseau social dédié exclusivement pour nos employés</h1>
+      <h1>
+        Bienvenue !<br />
+        Connectez-vous a votre compte
+      </h1>
       <form id="form" class="topBefore">
         <h2>Connexion</h2>
-        <input id="name" type="text" placeholder="NAME" />
+        <input id="email" type="text" placeholder="EMAIL" />
         <input id="password" type="text" placeholder="PASSWORD" />
         <input id="submit" type="submit" value="GO!" />
       </form>
@@ -13,17 +19,6 @@
 </template>
 
 <style scoped>
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 h2 {
   color: #42b983;
 }
