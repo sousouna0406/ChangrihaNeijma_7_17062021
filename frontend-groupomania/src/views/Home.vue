@@ -1,12 +1,12 @@
 <template>
-  <section>
+  <main>
     <div class="home">
       <div class="logo">
         <img alt="Vue logo" src="../assets/logo.png" />
       </div>
       <HelloWorld msg="Réseau sociale pour les entreprises" />
     </div>
-  </section>
+  </main>
 </template>
 
 <script>
