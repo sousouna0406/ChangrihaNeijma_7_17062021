@@ -2,8 +2,17 @@
   <div id="app">
     <header>
       <div id="nav">
-        <router-link to="/">S'inscire</router-link> |
-        <router-link to="/about">Connexion</router-link>
+        <router-link to="/signup"><i class="fas fa-user-plus"></i></router-link>
+        |
+        <router-link to="/signin"
+          ><i class="fas fa-sign-in-alt"></i
+        ></router-link>
+        |
+        <router-link to="/home"><i class="fas fa-home"></i></router-link>
+        |
+        <router-link to="/user"
+          ><i class="fas fa-address-card"></i
+        ></router-link>
       </div>
     </header>
 
@@ -81,7 +90,7 @@ header {
 
 #nav a {
   margin: 10px;
-  font-size: 19px;
+  font-size: 25px;
   font-weight: bold;
   color: #2c3e50;
 }

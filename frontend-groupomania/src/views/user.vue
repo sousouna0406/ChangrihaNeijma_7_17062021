@@ -1,5 +1,5 @@
 <template>
   <section class="formulaire">
-    <h1>home</h1>
+    <h1>user</h1>
   </section>
 </template>

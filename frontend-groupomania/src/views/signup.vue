@@ -1,23 +1,22 @@
 <template>
-  <section class="formulaire">
-    <h1>Un réseau social dédié exclusivement pour nos employés</h1>
-    <form id="form" class="topBefore">
-      <h2>S'inscrire</h2>
-      <input id="name" type="text" placeholder="NAME" />
-      <input id="email" type="text" placeholder="E-MAIL" />
-      <input id="submit" type="submit" value="GO!" />
-    </form>
-  </section>
+  <div class="about">
+    <div class="logo">
+      <img alt="Vue logo" src="../assets/logo.png" />
+    </div>
+    <section class="formulaire">
+      <h1>
+        Bienvenue !<br />
+        Connectez-vous a votre compte
+      </h1>
+      <form id="form" class="topBefore">
+        <h2>S'inscrire</h2>
+        <input id="email" type="text" placeholder="EMAIL" />
+        <input id="password" type="text" placeholder="PASSWORD" />
+        <input id="submit" type="submit" value="GO!" />
+      </form>
+    </section>
+  </div>
 </template>
-
-<script>
-export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
-};
-</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
