@@ -1,6 +1,6 @@
 <template>
   <section class="formulaire">
-    <h1>Un réseau social exclusivement pour nos employés</h1>
+    <h1>Un réseau social dédié exclusivement pour nos employés</h1>
     <form id="form" class="topBefore">
       <h2>S'inscrire</h2>
       <input id="name" type="text" placeholder="NAME" />

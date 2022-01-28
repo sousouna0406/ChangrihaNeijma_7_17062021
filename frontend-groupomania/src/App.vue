@@ -3,7 +3,7 @@
     <header>
       <div id="nav">
         <router-link to="/">S'inscire</router-link> |
-        <router-link to="/about">Connection</router-link>
+        <router-link to="/about">Connexion</router-link>
       </div>
     </header>
 
@@ -30,10 +30,10 @@
           </div>
         </div>
         <div class="col item social">
-          <a href="#"><i class="icon ion-social-facebook"></i></a
-          ><a href="#"><i class="icon ion-social-twitter"></i></a
-          ><a href="#"><i class="icon ion-social-snapchat"></i></a
-          ><a href="#"><i class="icon ion-social-instagram"></i></a>
+          <a href="#"><i class="fab fa-snapchat-ghost"></i></a
+          ><a href="#"><i class="fab fa-facebook-f"></i></a
+          ><a href="#"><i class="fab fa-instagram"></i></a
+          ><a href="#"><i class="fab fa-twitter"></i></a>
         </div>
         <p class="copyright">CONNECT-E © 2022</p>
       </div>
