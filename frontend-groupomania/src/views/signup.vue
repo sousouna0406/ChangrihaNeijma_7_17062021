@@ -6,7 +6,7 @@
     <section class="formulaire">
       <h1>
         Bienvenue !<br />
-        Connectez-vous a votre compte
+        Le réseau sociale interne dédié à nos employés
       </h1>
       <form id="form" class="topBefore">
         <h2>S'inscrire</h2>
