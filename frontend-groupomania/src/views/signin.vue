@@ -8,15 +8,58 @@
         Bienvenue !<br />
         Connectez-vous a votre compte
       </h1>
-      <form id="form" class="topBefore">
+      <form id="form" @submit="login" class="topBefore">
         <h2>Connexion</h2>
-        <input id="email" type="text" placeholder="EMAIL" />
-        <input id="password" type="text" placeholder="PASSWORD" />
+        <input id="email" v-model="email" type="email" placeholder="EMAIL" />
+        <input
+          id="password"
+          v-model="password"
+          type="password"
+          placeholder="PASSWORD"
+        />
         <input id="submit" type="submit" value="GO!" />
       </form>
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  name: "Signin",
+  data: () => ({
+    email: null,
+    password: null,
+    emailRule: (v) => /.+@.+\..+/.test(v),
+    passwordRule: (v) => /^[a-zA-Z]{4,}$/.test(v),
+  }),
+  methods: {
+    login() {
+      console.log(this);
+      if (!this.emailRule(this.email)) {
+        alert("L'email doit être valide");
+        return;
+      }
+      if (!this.passwordRule(this.password)) {
+        alert("Le mot de passe doit contenir un minimun de 4 caractères");
+        return;
+      }
+      this.$http
+        .post("http://localhost:3000/api/auth/signin", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("userId", res.data.id);
+          localStorage.setItem("isAdmin", res.data.isAdmin);
+          this.$router.push("/home");
+        })
+        .catch(console.error);
+    },
+  },
+};
+</script>
 
 <style scoped>
 h2 {

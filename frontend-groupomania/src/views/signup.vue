@@ -8,15 +8,54 @@
         Bienvenue !<br />
         Le réseau sociale interne dédié à nos employés
       </h1>
-      <form id="form" class="topBefore">
+      <form id="form" @submit="signup" class="topBefore">
         <h2>S'inscrire</h2>
-        <input id="email" type="text" placeholder="EMAIL" />
-        <input id="password" type="text" placeholder="PASSWORD" />
+        <input id="email" v-model="email" type="email" placeholder="EMAIL" />
+        <input
+          id="password"
+          v-model="password"
+          type="password"
+          placeholder="PASSWORD"
+        />
         <input id="submit" type="submit" value="GO!" />
       </form>
     </section>
   </div>
 </template>
+<script>
+export default {
+  name: "Signup",
+  data: () => ({
+    email: null,
+    password: null,
+    emailRule: (v) => /.+@.+\..+/.test(v),
+    passwordRule: (v) => /^[a-zA-Z]{4,}$/.test(v),
+  }),
+  methods: {
+    signup() {
+      console.log(this);
+      if (!this.emailRule(this.email)) {
+        alert("L'email doit être valide");
+        return;
+      }
+      if (!this.passwordRule(this.password)) {
+        alert("Le mot de passe doit contenir un minimun de 4 caractères");
+        return;
+      }
+      this.$http
+        .post("http://localhost:3000/api/auth/signup", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => {
+          console.log(res);
+          this.$router.push("/signin");
+        })
+        .catch(console.error);
+    },
+  },
+};
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
