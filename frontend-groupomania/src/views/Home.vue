@@ -1,25 +1,22 @@
 <template>
   <article id="posts">
-    <h1>Acceuil</h1>
     <div class="formulaire">
-      <p>Partagez avec vos collegues !</p>
-      <form action="/post" method="post">
-        <div>
-          <label for="message">Votre message</label>
+      <h1>Partagez avec vos collegues !</h1>
+      <form class="post">
+        <div class="message">
           <textarea
             id="message"
             name="message"
-            placeholder="Bonjour, ...."
+            placeholder="Présentez-vous, ..."
             required
           ></textarea>
         </div>
-        <div>
-          <input id="submit" type="submit" value="Send" />
-        </div>
+
+        <input id="submit" type="submit" value="Send" />
       </form>
     </div>
     <section id="posts">
-      <PostComponent post="post" v-for="post of posts"></PostComponent>
+      <!-- <PostComponent post="post" v-for="post of posts"></PostComponent>-->
     </section>
   </article>
 </template>
@@ -48,55 +45,49 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-h2 {
-  color: #42b983;
+article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 .formulaire {
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-#form {
-  position: relative;
-  width: 100%;
-  margin: 50px auto 100px auto;
-}
 
-input {
+#message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 15px;
-  width: 50%;
+  width: 100%;
   padding: 15px;
   background: white;
   outline: none;
   color: #42b983;
   border: solid 1px #b3aca7;
   transition: all 0.3s ease-in-out;
-}
-#name {
-  border-bottom: none;
+  border-radius: 30px;
 }
 
 input:hover {
   background: #46c08993;
   color: #0f0e0e;
 }
+.post {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 #submit {
-  margin-top: 30px;
-  padding: 15px;
+  padding: 25px;
 
   font-size: 0.875em;
   color: #b3aca7;
@@ -110,5 +101,12 @@ input:hover {
 
 #submit:hover {
   color: #e2dedb;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
 }
 </style>
