@@ -114,4 +114,10 @@ input:hover {
   justify-content: center;
   padding: 15px;
 }
+#posts {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
