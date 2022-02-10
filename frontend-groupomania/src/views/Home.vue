@@ -1,7 +1,7 @@
 <template>
   <article id="posts">
     <div class="formulaire">
-      <h1>Partagez avec vos collegues !</h1>
+      <h1>Partagez avec vos collegues <i class="far fa-comment-dots"></i></h1>
       <form class="post">
         <div class="message">
           <textarea
@@ -16,7 +16,11 @@
       </form>
     </div>
     <section id="posts">
-      <!-- <PostComponent post="post" v-for="post of posts"></PostComponent>-->
+      <PostComponent
+        :post="post"
+        v-for="post of posts"
+        :key="post.id"
+      ></PostComponent>
     </section>
   </article>
 </template>
@@ -37,6 +41,7 @@ export default {
       })
       .then((res) => {
         console.log(res);
+        this.posts = res.data.posts;
       })
       .catch(console.error);
   },
