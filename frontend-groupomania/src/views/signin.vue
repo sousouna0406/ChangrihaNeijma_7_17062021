@@ -18,6 +18,7 @@
           placeholder="PASSWORD"
         />
         <input id="submit" type="submit" value="GO!" />
+        <div><router-link to="/signup">S'inscrire</router-link></div>
       </form>
     </section>
   </div>
@@ -34,7 +35,6 @@ export default {
   }),
   methods: {
     login() {
-      console.log(this);
       if (!this.emailRule(this.email)) {
         alert("L'email doit être valide");
         return;
@@ -49,11 +49,10 @@ export default {
           password: this.password,
         })
         .then((res) => {
-          console.log(res);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("userId", res.data.id);
           localStorage.setItem("isAdmin", res.data.isAdmin);
-          this.$router.push("/home");
+          this.$router.push("/");
         })
         .catch(console.error);
     },
