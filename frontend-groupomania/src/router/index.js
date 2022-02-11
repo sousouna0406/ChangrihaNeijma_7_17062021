@@ -24,7 +24,7 @@ const routes = [
     component: user,
   },
   {
-    path: "/home",
+    path: "/",
     name: "home",
     component: home,
   },
@@ -32,6 +32,19 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (
+    to.name !== "signin" &&
+    to.name !== "signup" &&
+    !localStorage.getItem("token")
+  ) {
+    next({ name: "signin" });
+  } else if (to.name === "signin" || to.name === "signup") {
+    localStorage.clear();
+    next();
+  } else next();
 });
 
 export default router;
