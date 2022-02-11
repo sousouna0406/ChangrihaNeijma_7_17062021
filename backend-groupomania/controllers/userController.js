@@ -57,6 +57,7 @@ exports.deleteOneUser = async (req, res) => {
     await User.destroy({
       where: {
         id: req.params.id,
+        isAdmin: false,
       },
     });
     res.status(200).json({ deletedUser: req.params.id });
