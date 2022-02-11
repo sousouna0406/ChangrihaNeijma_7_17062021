@@ -22,6 +22,7 @@ export default {
     user: {},
     isAdmin: localStorage.getItem("isAdmin") === "true",
   }),
+  // fonction pour la création d'un compte utilisateur et la génération d'un token
   created() {
     this.$http
       .get(
@@ -38,6 +39,7 @@ export default {
       .catch(console.error);
   },
   methods: {
+    // fonction pour la suppression d'un compte utilisateur
     deleteAccount() {
       if (confirm("Êtes vous sûr de vouloir supprimer votre compte ?")) {
         this.$http

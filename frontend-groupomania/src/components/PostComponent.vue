@@ -37,6 +37,7 @@ export default {
   }),
   props: ["post"],
   methods: {
+    //
     setEditMode() {
       this.editMode = !this.editMode;
     },

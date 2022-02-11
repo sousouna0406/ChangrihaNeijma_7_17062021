@@ -3,7 +3,7 @@ const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 
 /**
- * @description
+ * @description Récuperation d'un User avec tout ses posts du plus recents au plus anciens.
  * @param {*} req
  * @param {*} res
  */
@@ -21,7 +21,7 @@ exports.getOneUser = async (req, res) => {
 };
 
 /**
- * @description
+ * @description Modification d'un User
  * @param {*} req
  * @param {*} res
  */
@@ -48,7 +48,7 @@ exports.updateOneUser = async (req, res) => {
 };
 
 /**
- * @description
+ * @description Suppression d'un user si il n'est pas l'admin
  * @param {*} req
  * @param {*} res
  */

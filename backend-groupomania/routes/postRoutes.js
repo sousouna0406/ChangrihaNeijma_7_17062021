@@ -1,14 +1,24 @@
-const { Router } = require('express');
-const { getAllPosts, getOnePost, createOnePost, updateOnePost, deleteOnePost } = require('../controllers/postController');
-const isOwnerOrAdmin = require('../middlewares/isOwnerOrAdmin');
-const token = require('../middlewares/token');
+const { Router } = require("express");
+const {
+  getAllPosts,
+  getOnePost,
+  createOnePost,
+  updateOnePost,
+  deleteOnePost,
+} = require("../controllers/postController");
+const isOwnerOrAdmin = require("../middlewares/isOwnerOrAdmin");
+const token = require("../middlewares/token");
 
 const router = Router();
-
-router.get('/', token, getAllPosts);
-router.get('/:id', token, getOnePost);
-router.post('/', token, createOnePost);
-router.put('/:id', token, isOwnerOrAdmin, updateOnePost);
-router.delete('/:id', token, isOwnerOrAdmin, deleteOnePost)
+// route pour la récupération de tout les posts
+router.get("/", token, getAllPosts);
+// route pour la récupération d'un seul posts (non utiliser)
+router.get("/:id", token, getOnePost);
+// route pour création d'un post
+router.post("/", token, createOnePost);
+// route pour la modification d'un post
+router.put("/:id", token, isOwnerOrAdmin, updateOnePost);
+// route pour la suppression d'un post
+router.delete("/:id", token, isOwnerOrAdmin, deleteOnePost);
 
 module.exports = router;

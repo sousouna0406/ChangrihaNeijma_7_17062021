@@ -4,9 +4,9 @@ import signup from "../views/signup.vue";
 import signin from "../views/signin.vue";
 import user from "../views/user.vue";
 import home from "../views/home.vue";
-// importer les components
+
 Vue.use(VueRouter);
-// cree les differentes routes
+// création des differents chemins
 const routes = [
   {
     path: "/signin",
@@ -33,7 +33,7 @@ const routes = [
 const router = new VueRouter({
   routes,
 });
-
+// avant chaque connexion ou inscription
 router.beforeEach((to, from, next) => {
   if (
     to.name !== "signin" &&

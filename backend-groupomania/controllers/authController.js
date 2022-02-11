@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 /**
- * @description
+ * @description Fonction pour login création token
  * @param {*} req
  * @param {*} res
  */
@@ -38,7 +38,7 @@ exports.signin = async (req, res) => {
 };
 
 /**
- * @description
+ * @description // fonction pour l'inscription d'un utilisateur
  * @param {*} req
  * @param {*} res
  */

@@ -2,7 +2,8 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 
 /**
- * @description
+ * @description Récupération de tous les posts du plus recents au plus anciens.
+ *  Pour récupérer les infos de l'utilisateur on utilise include
  * @param {*} req
  * @param {*} res
  */
@@ -19,7 +20,7 @@ exports.getAllPosts = async (req, res) => {
 };
 
 /**
- * @description
+ * @description Récuperation d'un seule post grâce a son Id ( Cette fonctions n'est pas utiliser par l'appli )
  * @param {*} req
  * @param {*} res
  */
@@ -36,7 +37,7 @@ exports.getOnePost = async (req, res) => {
 };
 
 /**
- * @description
+ * @description Création d'un post
  * @param {*} req
  * @param {*} res
  */
@@ -51,7 +52,7 @@ exports.createOnePost = async (req, res) => {
 };
 
 /**
- * @description
+ * @description Modification d'un post
  * @param {*} req
  * @param {*} res
  */
@@ -77,7 +78,7 @@ exports.updateOnePost = async (req, res) => {
 };
 
 /**
- * @description
+ * @description Suppression d'un post
  * @param {*} req
  * @param {*} res
  */

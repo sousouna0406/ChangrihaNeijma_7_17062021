@@ -6,7 +6,7 @@ import PostComponent from "./components/PostComponent.vue";
 Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false;
-
+// nouvelle instance vue avec la propriété routeur
 new Vue({
   router,
   render: (h) => h(App),

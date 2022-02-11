@@ -29,11 +29,13 @@
 <script>
 export default {
   name: "Home",
+  // Récupération des donnée inscrite par l'utilisateur
   data: () => ({
     posts: [],
     title: "",
     description: "",
   }),
+  // création d'un post
   created() {
     this.$http
       .get("http://localhost:3000/api/posts", {
@@ -47,6 +49,7 @@ export default {
       .catch(console.error);
   },
   methods: {
+    //création d'un post
     createPost() {
       if (!this.title) {
         alert("Le titre est obligatoire");

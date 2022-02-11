@@ -26,6 +26,7 @@
 <script>
 export default {
   name: "Signup",
+  // Utilisation des regex pour l'email & password
   data: () => ({
     email: null,
     password: null,
@@ -33,6 +34,8 @@ export default {
     passwordRule: (v) => /^[a-zA-Z]{4,}$/.test(v),
   }),
   methods: {
+    // fonction pour l'inscription d'un user et si l'email et le password est OK
+    // redirection vers la page login
     signup() {
       if (!this.emailRule(this.email)) {
         alert("L'email doit être valide");
