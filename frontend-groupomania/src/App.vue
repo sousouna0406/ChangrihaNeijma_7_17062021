@@ -1,18 +1,15 @@
 <template>
   <div id="app">
-    <header>
+    <header v-if="isLogged">
       <div id="nav">
-        <router-link to="/signup"><i class="fas fa-user-plus"></i></router-link>
-        |
-        <router-link to="/signin"
-          ><i class="fas fa-sign-in-alt"></i
-        ></router-link>
-        |
-        <router-link to="/home"><i class="fas fa-home"></i></router-link>
+        <router-link to="/"><i class="fas fa-home"></i></router-link>
         |
         <router-link to="/user"
           ><i class="fas fa-address-card"></i
         ></router-link>
+        <router-link to="/signin">
+          <i class="fas fa-sign-out-alt"></i>
+        </router-link>
       </div>
     </header>
 
@@ -20,37 +17,29 @@
 
     <footer class="footer-dark">
       <div class="container">
-        <div class="row">
-          <div class="footertex">
-            <h3>Services</h3>
-            <ul>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Development</a></li>
-              <li><a href="#">Hosting</a></li>
-            </ul>
-          </div>
-          <div class="footertex">
-            <h3>Coordonnées</h3>
-            <ul>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Development</a></li>
-              <li><a href="#">Hosting</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col item social">
-          <a href="#"><i class="fab fa-snapchat-ghost"></i></a
-          ><a href="#"><i class="fab fa-facebook-f"></i></a
-          ><a href="#"><i class="fab fa-instagram"></i></a
-          ><a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
         <p class="copyright">CONNECT-E © 2022</p>
       </div>
     </footer>
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+  data: () => ({
+    isLogged: localStorage.getItem("token"),
+  }),
+  updated() {
+    this.isLogged = localStorage.getItem("token");
+  },
+};
+</script>
+
 <style>
+html,
+body {
+  height: 100%;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
