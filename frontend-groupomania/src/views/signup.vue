@@ -18,6 +18,7 @@
           placeholder="PASSWORD"
         />
         <input id="submit" type="submit" value="GO!" />
+        <div><router-link to="/signin">Se connecter</router-link></div>
       </form>
     </section>
   </div>
@@ -33,7 +34,6 @@ export default {
   }),
   methods: {
     signup() {
-      console.log(this);
       if (!this.emailRule(this.email)) {
         alert("L'email doit être valide");
         return;
@@ -47,8 +47,7 @@ export default {
           email: this.email,
           password: this.password,
         })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           this.$router.push("/signin");
         })
         .catch(console.error);
