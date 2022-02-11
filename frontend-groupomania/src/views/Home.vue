@@ -1,28 +1,29 @@
 <template>
-  <article id="posts">
+  <section id="posts">
     <div class="formulaire">
       <h1>Partagez avec vos collegues <i class="far fa-comment-dots"></i></h1>
-      <form class="post">
+      <form class="form">
         <div class="message">
+          <input required v-model="title" type="text" placeholder="Titre*" />
           <textarea
+            v-model="description"
             id="message"
             name="message"
-            placeholder="Présentez-vous, ..."
+            placeholder="Présentez-vous, dites quelque chose..."
             required
           ></textarea>
+          <input id="submit" @click="createPost" value="Poster !" />
         </div>
-
-        <input id="submit" type="submit" value="Send" />
       </form>
     </div>
-    <section id="posts">
+    <section>
       <PostComponent
         :post="post"
         v-for="post of posts"
         :key="post.id"
       ></PostComponent>
     </section>
-  </article>
+  </section>
 </template>
 
 <script>
@@ -30,9 +31,10 @@ export default {
   name: "Home",
   data: () => ({
     posts: [],
+    title: "",
+    description: "",
   }),
   created() {
-    console.log("home");
     this.$http
       .get("http://localhost:3000/api/posts", {
         headers: {
@@ -40,17 +42,43 @@ export default {
         },
       })
       .then((res) => {
-        console.log(res);
         this.posts = res.data.posts;
       })
       .catch(console.error);
   },
-  methods: {},
+  methods: {
+    createPost() {
+      if (!this.title) {
+        alert("Le titre est obligatoire");
+        return;
+      }
+
+      this.$http
+        .post(
+          "http://localhost:3000/api/posts",
+          {
+            title: this.title,
+            description: this.description,
+            userId: Number(localStorage.getItem("userId")),
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        )
+        .then(() => {
+          this.$router.go();
+        })
+        .catch(console.error);
+    },
+  },
 };
 </script>
 
 <style scoped>
-article {
+section {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +112,7 @@ input:hover {
   background: #46c08993;
   color: #0f0e0e;
 }
-.post {
+.form {
   width: 100%;
   display: flex;
   align-items: center;
@@ -93,15 +121,14 @@ input:hover {
 
 #submit {
   padding: 25px;
-
   font-size: 0.875em;
-  color: #b3aca7;
-
+  color: white;
+  font-weight: bold;
   outline: none;
   cursor: pointer;
-
   border: solid 1px #b3aca7;
   border-radius: 50px;
+  background: #42b983;
 }
 
 #submit:hover {
@@ -113,6 +140,8 @@ input:hover {
   align-items: center;
   justify-content: center;
   padding: 15px;
+  flex-direction: column;
+  gap: 10px;
 }
 #posts {
   width: 100%;
@@ -121,3 +150,4 @@ input:hover {
   align-items: center;
 }
 </style>
+Écrire à Karim Saadi Aa
