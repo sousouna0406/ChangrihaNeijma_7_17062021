@@ -13,8 +13,6 @@ const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
-console.log(1);
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
