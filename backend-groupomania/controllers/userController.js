@@ -1,59 +1,66 @@
-const User = require('../models/User');
-const Post = require('../models/Post');
+const User = require("../models/User");
+const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 
 /**
  * @description
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 exports.getOneUser = async (req, res) => {
-    try {
-        const user = await User.findOne({ include: Post, where: { id: req.params.id } });
-        res.status(200).json({ user });
-    } catch (error) {
-        res.status(500).json({ error });
-    }
-}
+  try {
+    const user = await User.findOne({
+      include: Post,
+      where: { id: req.params.id },
+      order: [[Post, "createdAt", "desc"]],
+    });
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
 
 /**
  * @description
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 exports.updateOneUser = async (req, res) => {
-    try {
-        if(req.body.password) {
-            req.body.password =  await bcrypt.hash(req.body.password, 10);
-        }
-        await User.update({
-            ...req.body
-        }, {
-            where: {
-                id: req.params.id
-            }
-        });
-        const updatedUser = await User.findOne({ where: { id: req.params.id } });
-        res.status(200).json({ updatedUser });
-    } catch (error) {
-        res.status(500).json({ error });
+  try {
+    if (req.body.password) {
+      req.body.password = await bcrypt.hash(req.body.password, 10);
     }
-}
+    await User.update(
+      {
+        ...req.body,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    const updatedUser = await User.findOne({ where: { id: req.params.id } });
+    res.status(200).json({ updatedUser });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
 
 /**
  * @description
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 exports.deleteOneUser = async (req, res) => {
-    try {
-        await User.destroy({
-            where: {
-                id: req.params.id
-            }
-        });
-        res.status(200).json({ deletedUser: req.params.id });
-    } catch (error) {
-        res.status(500).json({ error });
-    }
-}
+  try {
+    await User.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json({ deletedUser: req.params.id });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
