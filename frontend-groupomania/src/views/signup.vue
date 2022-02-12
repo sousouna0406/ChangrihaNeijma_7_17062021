@@ -69,8 +69,18 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
+a:hover {
+  font-weight: bold;
+}
 a {
+  display: flex;
+  padding-top: 15px;
   color: #42b983;
+  font-size: 22px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 h2 {
   color: #42b983;

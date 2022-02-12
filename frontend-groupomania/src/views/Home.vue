@@ -4,7 +4,13 @@
       <h1>Partagez avec vos collegues <i class="far fa-comment-dots"></i></h1>
       <form class="form">
         <div class="message">
-          <input required v-model="title" type="text" placeholder="Titre*" />
+          <input
+            id="title"
+            required
+            v-model="title"
+            type="text"
+            placeholder="Titre*"
+          />
           <textarea
             v-model="description"
             id="message"
@@ -114,6 +120,8 @@ section {
 input:hover {
   background: #46c08993;
   color: #0f0e0e;
+  box-shadow: 0px 8px 15px #858282;
+  transform: scale(0.95);
 }
 .form {
   width: 100%;
@@ -122,6 +130,21 @@ input:hover {
   justify-content: center;
 }
 
+#title {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  width: 100%;
+  padding: 15px;
+  background: white;
+  outline: none;
+  color: #42b983;
+  border: solid 1px #b3aca7;
+  transition: all 0.3s ease-in-out;
+  border-radius: 30px;
+}
 #submit {
   padding: 25px;
   font-size: 0.875em;
@@ -132,6 +155,7 @@ input:hover {
   border: solid 1px #b3aca7;
   border-radius: 50px;
   background: #42b983;
+  text-align: center;
 }
 
 #submit:hover {

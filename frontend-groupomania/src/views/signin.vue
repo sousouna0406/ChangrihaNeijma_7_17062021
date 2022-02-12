@@ -93,7 +93,19 @@ input {
 #name {
   border-bottom: none;
 }
-
+a:hover {
+  font-weight: bold;
+}
+a {
+  display: flex;
+  padding-top: 15px;
+  color: #42b983;
+  font-size: 22px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
 input:hover {
   background: #46c08993;
   color: #0f0e0e;

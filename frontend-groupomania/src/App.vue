@@ -7,6 +7,7 @@
         <router-link to="/user"
           ><i class="fas fa-address-card"></i
         ></router-link>
+        |
         <router-link to="/signin">
           <i class="fas fa-sign-out-alt"></i>
         </router-link>

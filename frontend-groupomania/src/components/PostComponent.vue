@@ -95,6 +95,34 @@ export default {
 p {
   margin: 0%;
 }
+input {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  width: 97%;
+  padding: 5px;
+  background: white;
+  outline: none;
+  color: #42b983;
+  border: solid 1px #b3aca7;
+  transition: all 0.3s ease-in-out;
+}
+textarea {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  width: 97%;
+  padding: 5px;
+  background: white;
+  outline: none;
+  color: #42b983;
+  border: solid 1px #b3aca7;
+  transition: all 0.3s ease-in-out;
+}
 
 h4 {
   margin: 0%;
@@ -121,7 +149,6 @@ h4 {
 }
 .post-modify {
   padding: 15px;
-
   font-size: 0.875em;
   color: #ffffff;
   font-weight: bold;
@@ -142,7 +169,7 @@ h4 {
   outline: none;
   cursor: pointer;
   margin: 15px;
-  border: solid 1px #9654b4;
+  border: solid 1px #42b983;
   border-radius: 50px;
 }
 .post-delete {
@@ -160,6 +187,7 @@ h4 {
 button:hover {
   box-shadow: 0px 8px 15px #858282;
   transform: scale(0.95);
+  color: #e2dedb;
 }
 .button {
   display: flex;
@@ -169,4 +197,3 @@ button:hover {
   align-items: center;
 }
 </style>
-Écrire à Karim Saadi Aa
