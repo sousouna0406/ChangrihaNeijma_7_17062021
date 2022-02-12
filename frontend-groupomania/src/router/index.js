@@ -33,7 +33,9 @@ const routes = [
 const router = new VueRouter({
   routes,
 });
-// avant chaque connexion ou inscription
+// avant chaque navigation, on vérifie si le token est présent.
+// Sinon on renvoi vers le login.
+// Cela marche pour toutes les routes sauf sigin et sigup
 router.beforeEach((to, from, next) => {
   if (
     to.name !== "signin" &&

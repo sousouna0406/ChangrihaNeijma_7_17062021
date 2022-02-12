@@ -18,11 +18,12 @@
 <script>
 export default {
   name: "User",
+  // initialisation des variables (models) utilisées par le composant
   data: () => ({
     user: {},
     isAdmin: localStorage.getItem("isAdmin") === "true",
   }),
-  // fonction pour la création d'un compte utilisateur et la génération d'un token
+  // récupération des informations de l'utilisateur et ses posts
   created() {
     this.$http
       .get(

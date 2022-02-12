@@ -27,7 +27,7 @@
 <script>
 export default {
   name: "Signin",
-  // Utilisation des regex pour l'email & password
+  // initialisation des variables (models) utilisées par le composant
   data: () => ({
     email: null,
     password: null,

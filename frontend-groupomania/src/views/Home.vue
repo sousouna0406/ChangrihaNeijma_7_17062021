@@ -35,7 +35,7 @@
 <script>
 export default {
   name: "Home",
-  // Récupération des donnée inscrite par l'utilisateur
+  // initialisation des variables (models) utilisées par le composant
   data: () => ({
     posts: [],
     title: "",

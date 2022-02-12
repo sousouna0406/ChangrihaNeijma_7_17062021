@@ -19,7 +19,7 @@ app.use(express.json());
 
 // Appel de la fonction pour la liaison a sequelize
 initDb();
-// Appel de la fonction pour
+// Appel de la fonction pour définir les associations entre les models
 extraSetup();
 
 // route pour l'authentification

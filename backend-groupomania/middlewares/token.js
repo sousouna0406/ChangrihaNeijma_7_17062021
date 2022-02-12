@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-// Création d'un token
+// vérification de la validité du token
 
 module.exports = (req, res, next) => {
   try {

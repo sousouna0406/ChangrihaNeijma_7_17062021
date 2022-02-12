@@ -30,6 +30,7 @@
 <script>
 export default {
   name: "PostComponent",
+  // initialisation des variables (models) utilisées par le composant
   data: () => ({
     editMode: false,
     currentUserId: localStorage.getItem("userId"),

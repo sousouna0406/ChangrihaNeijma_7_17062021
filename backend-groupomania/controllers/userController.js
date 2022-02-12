@@ -21,7 +21,7 @@ exports.getOneUser = async (req, res) => {
 };
 
 /**
- * @description Modification d'un User
+ * @description Modification d'un User (non utiliser dans l'appli)
  * @param {*} req
  * @param {*} res
  */

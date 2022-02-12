@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 // configuration de Sequelize
 const sequelize = new Sequelize(
   `mysql://${process.env.BDD_USER}:${process.env.BDD_PWD}@localhost:3306/groupomania`
-); // Example for postgres
+);
 async function initDb() {
   try {
     await sequelize.authenticate();
