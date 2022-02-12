@@ -116,7 +116,10 @@ section {
   transition: all 0.3s ease-in-out;
   border-radius: 30px;
 }
-
+textarea:hover {
+  box-shadow: 0px 8px 15px #858282;
+  transform: scale(0.95);
+}
 input:hover {
   background: #46c08993;
   color: #0f0e0e;
