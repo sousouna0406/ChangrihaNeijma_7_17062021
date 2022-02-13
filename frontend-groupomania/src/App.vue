@@ -71,6 +71,7 @@ header {
   align-items: center;
   justify-content: center;
   position: sticky;
+  height: 100px;
 }
 
 .logo {
