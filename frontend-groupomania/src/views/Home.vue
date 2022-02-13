@@ -108,7 +108,7 @@ section {
   align-items: center;
   font-size: 15px;
   width: 100%;
-  padding: 15px;
+  padding: 12px;
   background: white;
   outline: none;
   color: #42b983;
@@ -140,7 +140,7 @@ input:hover {
   align-items: center;
   font-size: 15px;
   width: 100%;
-  padding: 15px;
+  padding: 12px;
   background: white;
   outline: none;
   color: #42b983;
@@ -180,4 +180,3 @@ input:hover {
   align-items: center;
 }
 </style>
-Écrire à Karim Saadi Aa

@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <header v-if="isLogged">
+      <div class="logo">
+        <img alt="Vue logo" src="../src/assets/logo.png" />
+      </div>
       <div id="nav">
         <router-link to="/"><i class="fas fa-home"></i></router-link>
         |
@@ -60,26 +63,33 @@ body {
   background-size: cover;
 }
 header {
+  background-color: #f3f1f0d7;
+  top: 0px;
+  z-index: 1;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: sticky;
 }
 
 .logo {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 20px;
 }
 .logo img {
-  width: 265px;
+  width: 38%;
+  height: 10%;
 }
 
 #nav {
   width: 100%;
-  justify-content: center;
+  justify-content: flex-end;
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 
 #nav a {
