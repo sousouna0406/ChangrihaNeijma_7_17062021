@@ -46,7 +46,7 @@ export default {
 <style>
 html,
 body {
-  height: 100%;
+  height: 100vh;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -71,7 +71,6 @@ header {
   align-items: center;
   justify-content: center;
   position: sticky;
-  height: 100px;
 }
 
 .logo {
@@ -129,9 +128,13 @@ header {
   }
 }
 
-@media (max-width: 767px) {
-  .footer-dark .item.text {
-    margin-bottom: 0;
+@media (min-width: 767px) and (max-width: 991px) {
+  .footer-dark {
+    position: fixed;
+    bottom: 0;
+  }
+  #app {
+    height: 100%;
   }
 }
 
