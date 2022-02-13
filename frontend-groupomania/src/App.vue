@@ -124,6 +124,9 @@ header {
     text-align: center;
     padding-bottom: 20px;
   }
+  .logo img {
+    width: 70%;
+  }
 }
 
 @media (max-width: 767px) {

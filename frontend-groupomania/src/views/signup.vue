@@ -134,4 +134,8 @@ input:hover {
 #submit:hover {
   color: #e2dedb;
 }
+.logo {
+  justify-content: center;
+  margin: 0%;
+}
 </style>
