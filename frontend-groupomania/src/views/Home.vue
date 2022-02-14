@@ -73,7 +73,7 @@ export default {
       });
   },
   methods: {
-    //
+    //chargement des fichiers
     onFileChange(event) {
       const file = event.target.files[0];
       if (!this.filesAccepted.includes(file.type)) {

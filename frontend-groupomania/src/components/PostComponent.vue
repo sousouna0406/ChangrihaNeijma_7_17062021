@@ -56,7 +56,7 @@ export default {
   }),
   props: ["post"],
   methods: {
-    //
+    // chargement des fichiers(img)
     onFileChange(event) {
       const file = event.target.files[0];
       if (!this.filesAccepted.includes(file.type)) {
@@ -70,7 +70,7 @@ export default {
     setEditMode() {
       this.editMode = !this.editMode;
     },
-    //
+    //suppression d'un post
     deletePost() {
       if (confirm("Êtes vous sûr de vouloir supprimer votre post ?")) {
         this.$http
@@ -88,7 +88,7 @@ export default {
           });
       }
     },
-    //
+    // modification d'un post
     update() {
       const formData = new FormData();
 

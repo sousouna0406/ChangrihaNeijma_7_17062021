@@ -23,7 +23,7 @@ initDb();
 // Appel de la fonction pour définir les associations entre les models
 extraSetup();
 
-//
+// route pour placer les images dans le dossier images
 app.use("/images", express.static(path.join(__dirname, "images")));
 // route pour l'authentification
 app.use("/api/auth", authRoutes);
