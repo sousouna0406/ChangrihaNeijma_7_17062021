@@ -128,7 +128,7 @@ header {
   }
 }
 
-@media (min-width: 767px) and (max-width: 991px) {
+@media (min-width: 750px) and (max-width: 991px) {
   .footer-dark {
     position: fixed;
     bottom: 0;
