@@ -1,5 +1,6 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
+const fs = require("fs");
 
 /**
  * @description Récupération de tous les posts du plus recents au plus anciens.
@@ -43,7 +44,13 @@ exports.getOnePost = async (req, res) => {
  */
 exports.createOnePost = async (req, res) => {
   try {
-    const newPost = new Post(req.body);
+    const postToCreate = req.body;
+    if (req.file) {
+      postToCreate.img = `${req.protocol}://${req.get("host")}/images/${
+        req.file.filename
+      }`;
+    }
+    const newPost = new Post(postToCreate);
     await newPost.save();
     res.status(201).json({ newPost });
   } catch (error) {
@@ -58,18 +65,32 @@ exports.createOnePost = async (req, res) => {
  */
 exports.updateOnePost = async (req, res) => {
   try {
-    await Post.update(
-      {
-        ...req.body,
+    const postToUpdate = req.body;
+    const foundPost = await Post.findOne({
+      where: {
+        id: req.params.id,
       },
-      {
-        where: {
-          id: req.params.id,
-        },
-      }
-    );
+    });
 
-    const updatedPost = await Post.findOne({ where: { id: req.params.id } });
+    if (!foundPost) {
+      return res.status(404).json({ error: "Post non trouvé !" });
+    }
+
+    if (req.file) {
+      postToUpdate.img = `${req.protocol}://${req.get("host")}/images/${
+        req.file.filename
+      }`;
+      if (foundPost.img) {
+        fs.unlink(`images/${foundPost.img.split("images/")[1]}`, (err) => {
+          console.error(err);
+        });
+      }
+    }
+
+    for (const key in postToUpdate) {
+      foundPost[key] = postToUpdate[key];
+    }
+    await foundPost.save();
 
     res.status(200).json({ updatedPost });
   } catch (error) {
