@@ -3,6 +3,8 @@ frontend-groupomania/node_modules
 backend-groupomania/node_modules
 backend-groupomania/config/.env
 frontend-groupomania/dist
+backend-groupomania/images/*.*
+!backend-groupomania/images/.gitkeep
 
 
 # local env files
