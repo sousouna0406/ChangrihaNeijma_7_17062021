@@ -52,6 +52,7 @@ export default {
     currentUserId: localStorage.getItem("userId"),
     isAdmin: localStorage.getItem("isAdmin") === "true",
     filesAccepted: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
+    isFileChanged: false,
   }),
   props: ["post"],
   methods: {
@@ -63,6 +64,7 @@ export default {
         return alert("Seul les fichiers jpg, jpeg, png et gif sont accéptés");
       }
       this.post.img = file;
+      this.isFileChanged = true;
     },
     //
     setEditMode() {
@@ -93,7 +95,7 @@ export default {
       formData.append("title", this.post.title);
       formData.append("description", this.post.description);
 
-      if (this.post.img) {
+      if (this.post.img && this.isFileChanged) {
         formData.append("img", this.post.img);
       }
       this.$http
