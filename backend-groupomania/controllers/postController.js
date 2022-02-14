@@ -92,7 +92,7 @@ exports.updateOnePost = async (req, res) => {
     }
     await foundPost.save();
 
-    res.status(200).json({ updatedPost });
+    res.status(200).json({ foundPost });
   } catch (error) {
     res.status(500).json({ error });
   }
