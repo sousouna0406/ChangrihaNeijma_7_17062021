@@ -26,7 +26,12 @@
             @change="onFileChange"
             accept=".jpg, .jpeg, .png, .gif"
           />
-          <input id="submit" @click="createPost" value="Poster !" />
+          <input
+            id="submit"
+            type="button"
+            @click="createPost"
+            value="Poster !"
+          />
         </div>
       </form>
     </div>
