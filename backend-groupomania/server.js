@@ -10,6 +10,7 @@ const extraSetup = require("./config/extraSetup");
 const authRoutes = require("./routes/authRoutes");
 const postRoutes = require("./routes/postRoutes");
 const userRoutes = require("./routes/userRoutes");
+const path = require("path");
 
 const app = express();
 
@@ -22,6 +23,8 @@ initDb();
 // Appel de la fonction pour définir les associations entre les models
 extraSetup();
 
+//
+app.use("/images", express.static(path.join(__dirname, "images")));
 // route pour l'authentification
 app.use("/api/auth", authRoutes);
 // route pour les Posts

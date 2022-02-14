@@ -13,6 +13,10 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    img: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     userId: {
       type: DataTypes.INTEGER,
     },
