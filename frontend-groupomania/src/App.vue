@@ -71,6 +71,7 @@ header {
   align-items: center;
   justify-content: center;
   position: sticky;
+  height: 100px;
 }
 
 .logo {
@@ -125,16 +126,6 @@ header {
   }
   .logo img {
     width: 70%;
-  }
-}
-
-@media (min-width: 750px) and (max-width: 991px) {
-  .footer-dark {
-    position: fixed;
-    bottom: 0;
-  }
-  #app {
-    height: 100%;
   }
 }
 
