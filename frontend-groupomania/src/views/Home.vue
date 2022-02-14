@@ -18,6 +18,14 @@
             placeholder="Présentez-vous, dites quelque chose..."
             required
           ></textarea>
+          <input
+            id="file"
+            required
+            type="file"
+            placeholder="Ajouter une image"
+            @change="onFileChange"
+            accept=".jpg, .jpeg, .png, .gif"
+          />
           <input id="submit" @click="createPost" value="Poster !" />
         </div>
       </form>
@@ -40,6 +48,8 @@ export default {
     posts: [],
     title: "",
     description: "",
+    file: null,
+    filesAccepted: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
   }),
   // création d'un post
   created() {
@@ -58,27 +68,37 @@ export default {
       });
   },
   methods: {
+    //
+    onFileChange(event) {
+      const file = event.target.files[0];
+      if (!this.filesAccepted.includes(file.type)) {
+        event.target.value = null;
+        return alert("Seul les fichiers jpg, jpeg, png et gif sont accéptés");
+      }
+      this.file = file;
+    },
     //création d'un post
     createPost() {
       if (!this.title) {
         alert("Le titre est obligatoire");
         return;
       }
+      const formData = new FormData();
 
+      formData.append("title", this.title);
+      formData.append("description", this.description);
+      formData.append("userId", Number(localStorage.getItem("userId")));
+
+      if (this.file) {
+        formData.append("img", this.file);
+      }
       this.$http
-        .post(
-          "http://localhost:3000/api/posts",
-          {
-            title: this.title,
-            description: this.description,
-            userId: Number(localStorage.getItem("userId")),
+        .post("http://localhost:3000/api/posts", formData, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "multipart/form-data",
           },
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          }
-        )
+        })
         .then(() => {
           this.$router.go();
         })
