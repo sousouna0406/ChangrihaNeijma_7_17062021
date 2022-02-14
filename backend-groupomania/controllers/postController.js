@@ -105,11 +105,23 @@ exports.updateOnePost = async (req, res) => {
  */
 exports.deleteOnePost = async (req, res) => {
   try {
-    await Post.destroy({
+    const foundPost = await Post.findOne({
       where: {
         id: req.params.id,
       },
     });
+
+    if (!foundPost) {
+      return res.status(404).json({ error: "Post non trouvé !" });
+    }
+
+    if (foundPost.img) {
+      fs.unlink(`images/${foundPost.img.split("images/")[1]}`, (err) => {
+        console.error(err);
+      });
+    }
+
+    await foundPost.destroy();
     res.status(200).json({ deletedPost: req.params.id });
   } catch (error) {
     res.status(500).json({ error });
