@@ -52,7 +52,10 @@ export default {
       .then((res) => {
         this.posts = res.data.posts;
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error(error);
+        alert("Une erreur est survenue");
+      });
   },
   methods: {
     //création d'un post
@@ -79,7 +82,10 @@ export default {
         .then(() => {
           this.$router.go();
         })
-        .catch(console.error);
+        .catch((error) => {
+          console.error(error);
+          alert("Une erreur est survenue");
+        });
     },
   },
 };

@@ -57,7 +57,10 @@ export default {
           localStorage.setItem("isAdmin", res.data.isAdmin);
           this.$router.push("/");
         })
-        .catch(console.error);
+        .catch((error) => {
+          console.error(error);
+          alert("Une erreur est survenue");
+        });
     },
   },
 };

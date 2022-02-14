@@ -53,7 +53,10 @@ export default {
         .then(() => {
           this.$router.push("/signin");
         })
-        .catch(console.error);
+        .catch((error) => {
+          console.error(error);
+          alert("Une erreur est survenue");
+        });
     },
   },
 };

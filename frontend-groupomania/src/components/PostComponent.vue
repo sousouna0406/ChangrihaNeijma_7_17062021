@@ -53,7 +53,10 @@ export default {
           .then(() => {
             this.$router.go();
           })
-          .catch(console.error);
+          .catch((error) => {
+            console.error(error);
+            alert("Une erreur est survenue");
+          });
       }
     },
     update() {
@@ -73,7 +76,10 @@ export default {
         .then(() => {
           this.$router.go();
         })
-        .catch(console.error);
+        .catch((error) => {
+          console.error(error);
+          alert("Une erreur est survenue");
+        });
     },
   },
 };

@@ -37,7 +37,10 @@ export default {
       .then((res) => {
         this.user = res.data.user;
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error(error);
+        alert("Une erreur est survenue");
+      });
   },
   methods: {
     // fonction pour la suppression d'un compte utilisateur
@@ -56,7 +59,10 @@ export default {
             localStorage.clear();
             this.$router.push("/signin");
           })
-          .catch(console.error);
+          .catch((error) => {
+            console.error(error);
+            alert("Une erreur est survenue");
+          });
       }
     },
   },
