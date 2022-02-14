@@ -13,6 +13,22 @@
     <div v-if="!editMode" class="post-description">{{ post.description }}</div>
     <textarea v-if="editMode" v-model="post.description"></textarea>
 
+    <img
+      class="post-img"
+      v-if="!editMode && post.img"
+      v-bind:src="post.img"
+      v-bind:alt="post.title"
+    />
+
+    <input
+      required
+      v-if="editMode"
+      type="file"
+      placeholder="Modifier l'image"
+      @change="onFileChange"
+      accept=".jpg, .jpeg, .png, .gif"
+    />
+
     <div
       v-if="!post.User || currentUserId == post.User.id || isAdmin"
       class="button"
@@ -35,13 +51,24 @@ export default {
     editMode: false,
     currentUserId: localStorage.getItem("userId"),
     isAdmin: localStorage.getItem("isAdmin") === "true",
+    filesAccepted: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
   }),
   props: ["post"],
   methods: {
     //
+    onFileChange(event) {
+      const file = event.target.files[0];
+      if (!this.filesAccepted.includes(file.type)) {
+        event.target.value = null;
+        return alert("Seul les fichiers jpg, jpeg, png et gif sont accéptés");
+      }
+      this.post.img = file;
+    },
+    //
     setEditMode() {
       this.editMode = !this.editMode;
     },
+    //
     deletePost() {
       if (confirm("Êtes vous sûr de vouloir supprimer votre post ?")) {
         this.$http
@@ -59,20 +86,23 @@ export default {
           });
       }
     },
+    //
     update() {
+      const formData = new FormData();
+
+      formData.append("title", this.post.title);
+      formData.append("description", this.post.description);
+
+      if (this.post.img) {
+        formData.append("img", this.post.img);
+      }
       this.$http
-        .put(
-          "http://localhost:3000/api/posts/" + this.post.id,
-          {
-            title: this.post.title,
-            description: this.post.description,
+        .put("http://localhost:3000/api/posts/" + this.post.id, formData, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "multipart/form-data",
           },
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          }
-        )
+        })
         .then(() => {
           this.$router.go();
         })
@@ -153,6 +183,9 @@ h4 {
   display: flex;
   width: 100%;
   padding: 15px;
+}
+.post-img {
+  width: 100%;
 }
 .post-modify {
   padding: 15px;
