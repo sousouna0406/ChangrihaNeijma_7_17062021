@@ -5,6 +5,8 @@ const {
   createOnePost,
   updateOnePost,
   deleteOnePost,
+  addOneComment,
+  deleteOneComment,
 } = require("../controllers/postController");
 const isOwnerOrAdmin = require("../middlewares/isOwnerOrAdmin");
 const token = require("../middlewares/token");
@@ -21,5 +23,14 @@ router.post("/", token, multer, createOnePost);
 router.put("/:id", token, isOwnerOrAdmin, multer, updateOnePost);
 // route pour la suppression d'un post
 router.delete("/:id", token, isOwnerOrAdmin, deleteOnePost);
+// route pour l'ajout d'un commentaire
+router.post("/:id/comment", token, addOneComment);
+// route pour la suppression d'un commentaire
+router.delete(
+  "/:id/comment/:idComment",
+  token,
+  isOwnerOrAdmin,
+  deleteOneComment
+);
 
 module.exports = router;

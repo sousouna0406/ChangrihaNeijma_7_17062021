@@ -1,5 +1,6 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
+const Comment = require("../models/Comment");
 const fs = require("fs");
 
 /**
@@ -11,8 +12,17 @@ const fs = require("fs");
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Post.findAll({
-      order: [["createdAt", "desc"]],
-      include: User,
+      order: [
+        ["createdAt", "desc"],
+        [Comment, "createdAt", "asc"],
+      ],
+      include: [
+        User,
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
     });
     res.status(200).json({ posts });
   } catch (error) {
@@ -28,7 +38,7 @@ exports.getAllPosts = async (req, res) => {
 exports.getOnePost = async (req, res) => {
   try {
     const post = await Post.findOne({
-      include: User,
+      include: [User, Comment],
       where: { id: req.params.id },
     });
     res.status(200).json({ post });
@@ -124,6 +134,49 @@ exports.deleteOnePost = async (req, res) => {
     await foundPost.destroy();
     res.status(200).json({ deletedPost: req.params.id });
   } catch (error) {
+    res.status(500).json({ error });
+  }
+};
+
+/**
+ * @description Ajout d'un commentaire sur un post
+ * @param {*} req
+ * @param {*} res
+ */
+exports.addOneComment = async (req, res) => {
+  try {
+    const post = await Post.findOne({
+      where: { id: req.params.id },
+    });
+    if (!post) {
+      return res.status(404).json({ error: "Post non trouvé" });
+    }
+    await Comment.create(req.body);
+    res.status(200).json({ post });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
+
+/**
+ * @description suppression d'un commentaire sur un post
+ * @param {*} req
+ * @param {*} res
+ */
+exports.deleteOneComment = async (req, res) => {
+  try {
+    const post = await Post.findOne({
+      where: { id: req.params.id },
+    });
+    if (!post) {
+      return res.status(404).json({ error: "Post non trouvé" });
+    }
+    await Comment.destroy({
+      where: { id: req.params.idComment },
+    });
+    res.status(200).json({ post });
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ error });
   }
 };
