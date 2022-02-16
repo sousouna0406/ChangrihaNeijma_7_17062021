@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 import PostComponent from "./components/PostComponent.vue";
+import CommentComponent from "./components/CommentComponent.vue";
 Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false;
@@ -13,3 +14,4 @@ new Vue({
 }).$mount("#app");
 
 Vue.component("PostComponent", PostComponent);
+Vue.component("CommentComponent", CommentComponent);
