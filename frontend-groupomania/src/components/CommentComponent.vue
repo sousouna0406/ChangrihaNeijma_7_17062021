@@ -27,7 +27,7 @@ export default {
   }),
   props: ["comment"],
   methods: {
-    //suppression d'un comment
+    //suppression d'un commentaire
     deleteComment() {
       if (confirm("Êtes vous sûr de vouloir supprimer votre commentaire ?")) {
         this.$http

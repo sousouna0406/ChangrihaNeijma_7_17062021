@@ -12,6 +12,7 @@ const fs = require("fs");
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Post.findAll({
+      // posts et commentaires du plus récent au plus anciens
       order: [
         ["createdAt", "desc"],
         [Comment, "createdAt", "asc"],
