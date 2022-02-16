@@ -1,6 +1,7 @@
 const Post = require("../models/Post");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Comment = require("../models/Comment");
 
 // middelware qui permet la modification d'un utilisateur
 // ou d'un post seulement par son utilisateur et l'admin
@@ -27,26 +28,41 @@ module.exports = async (req, res, next) => {
         }
         break;
       case "/api/posts":
-        const foundPost = await Post.findOne({
-          where: {
-            id: req.params.id,
-            userId: user.id,
-          },
-        });
-        if (!foundPost) {
-          return res
-            .status(403)
-            .json({ error: "Vous ne pouvez pas modifier ce post" });
+        console.log(req.originalUrl);
+        if (req.originalUrl.includes("/comment/")) {
+          const foundComment = await Comment.findOne({
+            where: {
+              userId: user.id,
+              id: req.params.idComment,
+            },
+          });
+          if (foundComment.userId !== user.id) {
+            return res
+              .status(403)
+              .json({ error: "Vous ne pouvez pas supprimer ce commentaire" });
+          }
+        } else {
+          const foundPost = await Post.findOne({
+            where: {
+              id: req.params.id,
+              userId: user.id,
+            },
+          });
+          if (!foundPost) {
+            return res
+              .status(403)
+              .json({ error: "Vous ne pouvez pas modifier ce post" });
+          }
         }
         break;
       default:
         return res
           .status(400)
           .json({ error: "ERREUR lors de l'utilisation de ce middleware" });
-        break;
     }
     return next();
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error });
   }
 };
