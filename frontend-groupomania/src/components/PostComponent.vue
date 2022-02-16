@@ -41,6 +41,26 @@
       </button>
       <button @click="deletePost" class="post-delete">Supprimer</button>
     </div>
+    <div class="contain-com">
+      <div class="post-commentaire">
+        <h4 class="titre-rep">Répondre :</h4>
+        <div class="commentaire">
+          <input
+            id="coms"
+            required
+            v-model="content"
+            type="text"
+            placeholder="Ecrivez un commentaire"
+          />
+          <button @click="commentPost" class="send-button">Envoyer</button>
+        </div>
+      </div>
+      <CommentComponent
+        :comment="comment"
+        v-for="comment of post.Comments"
+        :key="comment.id"
+      ></CommentComponent>
+    </div>
   </div>
 </template>
 <script>
@@ -53,9 +73,34 @@ export default {
     isAdmin: localStorage.getItem("isAdmin") === "true",
     filesAccepted: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
     isFileChanged: false,
+    content: "",
   }),
   props: ["post"],
   methods: {
+    // commenter un post
+    commentPost() {
+      this.$http
+        .post(
+          "http://localhost:3000/api/posts/" + this.post.id + "/comment/",
+          {
+            postId: this.post.id,
+            userId: this.currentUserId,
+            content: this.content,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        )
+        .then(() => {
+          this.$router.go();
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Une erreur est survenue");
+        });
+    },
     // chargement des fichiers(img)
     onFileChange(event) {
       const file = event.target.files[0];
@@ -118,6 +163,61 @@ export default {
 </script>
 
 <style scoped>
+.contain-com {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: #b3aca727 ridge 2px;
+  background-color: #b3aca727;
+  padding: 4px;
+  border-radius: 15px;
+}
+.titre-rep {
+  padding-left: 16px;
+}
+.post-commentaire {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.commentaire {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 11px;
+  width: 100%;
+}
+.send-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 0.875em;
+  color: #4fdd9d;
+  font-weight: bold;
+  background: #4dd4971f;
+  outline: none;
+  cursor: pointer;
+  margin: 5px;
+  border: solid 1px #4dd497;
+  border-radius: 15px;
+}
+.send-button:hover {
+  background: #4dd497;
+  color: #ffffff;
+}
+#coms {
+  margin: 0%;
+  padding: 10px;
+  border-radius: 15px;
+}
 #all-posts {
   display: flex;
   justify-content: center;
